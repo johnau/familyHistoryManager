@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<f:metadata>
+    <f:viewParam id="id" name="id" value="#{familyRelationshipBacking.id}" required="true">
+        <f:validateLongRange minimum="1" maximum="1000000" />
+    </f:viewParam>
+    <f:viewAction action="#{familyRelationshipBacking.onLoad}" />
+</f:metadata>
+
+<f:view>
+    <h:head>
+        <h:outputStylesheet>
+            h3 {
+            text-align: center;
+            }
+        </h:outputStylesheet>
+    </h:head>
+    <h:body>
+        <div class=""/>
+        <div class="">
+            <h3>Edit Family Relationships for: </h3>
+            <h3>
+                <h:link value="#{familyRelationshipBacking.a.firstName} #{familyRelationshipBacking.a.lastName}" outcome="family-member">
+                    <f:param name="id" value="#{familyRelationshipBacking.a.id}" />
+                </h:link>
+            </h3>
+        </div>
+        <div>
+            <span>
+                Add relationship:
+            </span>
+
+            <h:form id="new-family-relationship">
+                <p:messages id="messages" globalOnly="true"/>
+
+                <h:panelGrid columns="3" cellpadding="5" style="margin: 0 auto;">
+
+                    <h:outputText value="#{familyRelationshipBacking.a.firstName} #{familyRelationshipBacking.a.lastName}" />
+
+                    <h:selectOneMenu value="#{familyRelationshipBacking.relType}" converter="jsf.familyRelationshipConverter">
+                        <f:selectItems value="#{familyRelationshipBacking.relationshipTypes}" var="rt"
+                                itemValue="#{rt}" itemLabel="#{rt.getDisplayNameString()}" />
+                    </h:selectOneMenu>
+
+                    <h:selectOneMenu value="#{familyRelationshipBacking.b}" converter="jsf.familyMemberConverter">
+                        <f:selectItems value="#{familyRelationshipBacking.allMembers}" var="fm"
+                               itemValue="#{fm}" itemLabel="#{fm.firstName} #{fm.lastName}" />
+                    </h:selectOneMenu>
+
+                    <p:commandButton id="submit" update="@form"
+                          value="Create Family Relationship" action="#{familyRelationshipBacking.submit}" />
+                </h:panelGrid>
+            </h:form>
+
+        </div>
+
+    </h:body>
+</f:view>
+</html>

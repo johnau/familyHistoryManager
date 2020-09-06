@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<f:view>
+    <h:head>
+        <h:outputStylesheet>
+            h3 {
+            text-align: center;
+            }
+        </h:outputStylesheet>
+    </h:head>
+    <h:body>
+        <p:outputPanel>
+            <div class="ui-g">
+                <div class="ui-g-4"/>
+                <div class="ui-g-4">
+                    <h3>Create a new Family Member</h3>
+
+                    <h:form id="new-family-member">
+                        <p:messages id="messages" globalOnly="true"/>
+
+                        <h:panelGrid columns="3" cellpadding="5" style="margin: 0 auto;">
+
+                            <p:outputLabel for="firstname" value="Firstname"/>
+                            <p:inputText id="firstname" value="#{createFamilyMemberBacking.firstName}"/>
+                            <p:message for="firstname"/>
+
+                            <p:outputLabel for="othernames" value="Other names"/>
+                            <p:inputText id="othernames" value="#{createFamilyMemberBacking.otherNames}"/>
+                            <p:message for="othernames"/>
+
+                            <p:outputLabel for="lastname" value="Lastname"/>
+                            <p:inputText id="lastname" value="#{createFamilyMemberBacking.lastName}"/>
+                            <p:message for="lastname"/>
+
+                            <p:datePicker value="#{dateBean.date}"  />
+
+                            <p:commandButton id="submit" update="@form"
+                                value="Create Family Member" action="#{createFamilyMemberBacking.submit}"
+                                ajax="false"/>
+                        </h:panelGrid>
+                    </h:form>
+                </div>
+            </div>
+            <div class="ui-g">
+                <div class="ui-g-4"/>
+                <div class="ui-g-4">
+                    <h3>Family Members</h3>
+                    <ul>
+                        <p:repeat value="#{listFamilyMembersBacking.familyMembers}" var="familyMember">
+                            <li>
+                                <h:link value="#{familyMember.firstName} #{familyMember.lastName}" outcome="family-member">
+                                    <f:param name="id" value="#{familyMember.id}" />
+                                </h:link>
+                            </li>
+                        </p:repeat>
+                    </ul>
+                </div>
+            </div>
+        </p:outputPanel>
+    </h:body>
+</f:view>
+</html>
