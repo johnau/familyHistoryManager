@@ -16,6 +16,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "family_member")
+@SequenceGenerator(name = "family_member_sequence", initialValue = 1, allocationSize = 1)
 @NamedQueries({
     @NamedQuery(name = "FamilyMember.countByFirstName", query = "SELECT COUNT(f) FROM FamilyMember f WHERE LOWER(f.firstName) = LOWER(:firstName)"),
     @NamedQuery(name = "FamilyMember.findByFirstName", query = "SELECT f FROM FamilyMember f WHERE LOWER(f.firstName) = LOWER(:firstName)"),
@@ -25,8 +26,14 @@ import javax.persistence.*;
 public class FamilyMember implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
+    @Version
+    @Column(name = "optLock", columnDefinition = "integer default 0", nullable = false)
+    private Long version = 0L;
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="family_member_sequence")
+    @Column(name = "id", columnDefinition = "bigint", nullable = false, updatable = false)
     private Long id;
 
     private String firstName;

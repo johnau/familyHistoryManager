@@ -4,36 +4,36 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://java.sun.com/jsf/facelets"
       >
 
-    <h:head>
-	<h:outputStylesheet name="styles.css" library="css" />
-    </h:head>
+	<h:head>
+		<h:outputStylesheet name="styles.css" library="css" />
+	</h:head>
 
-    <h:body>
+	<h:body>
 
 	<div id="page">
 
-	    <div id="header">
-		<ui:insert name="header" >
-		  <ui:include src="header.xhtml" />
-		</ui:insert>
-	    </div>
+		<div id="header">
+		<p:insert name="header" >
+		  <p:include src="header.xhtml" />
+		</p:insert>
+		</div>
 
-	    <div id="mainmenu" class="left-column-body">
-	  	<ui:insert name="mainmenu" >
-	 	  <ui:include src="main_menu.xhtml" />
-	   	</ui:insert>
-	    </div>            
-            
-	    <div id="content" class="right-column-body">
-	  	<ui:insert name="content" >
-	 	  <ui:include src="profile_content.xhtml" />
-	   	</ui:insert>
-	    </div>
+		<div id="mainmenu" class="left-column-body">
+		<p:insert name="mainmenu" >
+		  <p:include src="main_menu.xhtml" />
+		</p:insert>
+		</div>
 
-        </div>
+		<div id="content" class="right-column-body">
+		<p:insert name="content" >
+		  <p:include src="profile_content.xhtml" />
+		</p:insert>
+		</div>
 
-    </h:body>
+		</div>
+
+	</h:body>
 </html>

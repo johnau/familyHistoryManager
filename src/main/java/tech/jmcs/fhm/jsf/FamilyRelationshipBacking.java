@@ -24,20 +24,20 @@ import java.util.List;
 public class FamilyRelationshipBacking {
     private static final Logger LOG = LoggerFactory.getLogger(FamilyRelationshipBacking.class);
 
-    @NotNull
-    private Long id; // Injection point of FamilyMember 'a' from JSF view
-
     @EJB
     private FamilyMemberFacadeLocal familyMemberFacade;
 
     @EJB
     private FamilyRelationshipFacadeLocal familyRelationshipFacade;
 
-    @Inject
-    private ExternalContext externalContext;
+//    @Inject
+//    private ExternalContext externalContext;
 
     @Inject
     private FacesContext facesContext;
+
+    @NotNull
+    private Long id; // Injection point of FamilyMember 'a' from JSF view
 
     private FamilyMember a; // FamilyMember a has RelationshipType to FamilyMember b
 
@@ -71,7 +71,6 @@ public class FamilyRelationshipBacking {
      */
     public void onLoad() {
         LOG.info("Running the onload method");
-
 //        LOG.info("Set Family member A as: #{}: {} {} {}", a.getId(), a.getFirstName(), a.getLastName(), a.getClass().getName());
     }
 

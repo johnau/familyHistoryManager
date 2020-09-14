@@ -8,7 +8,7 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui">
 
 <f:metadata>
     <f:viewParam id="id" name="id" value="#{familyRelationshipBacking.id}" required="true">
@@ -41,23 +41,25 @@ and open the template in the editor.
             </span>
 
             <h:form id="new-family-relationship">
-                <ui:messages id="messages" globalOnly="true"/>
+                <p:messages id="messages" globalOnly="true"/>
 
                 <h:panelGrid columns="3" cellpadding="5" style="margin: 0 auto;">
 
                     <h:outputText value="#{familyRelationshipBacking.a.firstName} #{familyRelationshipBacking.a.lastName}" />
 
                     <h:selectOneMenu value="#{familyRelationshipBacking.relType}" converter="jsf.familyRelationshipConverter">
+                        <f:selectItem itemLabel="Select Relationship Type" itemValue="" noSelectionOption="true" />
                         <f:selectItems value="#{familyRelationshipBacking.relationshipTypes}" var="rt"
                                 itemValue="#{rt}" itemLabel="#{rt.getDisplayNameString()}" />
                     </h:selectOneMenu>
 
                     <h:selectOneMenu value="#{familyRelationshipBacking.b}" converter="jsf.familyMemberConverter">
+                        <f:selectItem itemLabel="Select Family Member" itemValue="" noSelectionOption="true" />
                         <f:selectItems value="#{familyRelationshipBacking.allMembers}" var="fm"
                                itemValue="#{fm}" itemLabel="#{fm.firstName} #{fm.lastName}" />
                     </h:selectOneMenu>
 
-                    <ui:commandButton id="submit" update="@form"
+                    <p:commandButton id="submit" update="@form"
                           value="Create Family Relationship" action="#{familyRelationshipBacking.submit}" />
                 </h:panelGrid>
             </h:form>

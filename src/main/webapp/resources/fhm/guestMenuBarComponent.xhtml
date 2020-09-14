@@ -1,0 +1,33 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns = "http://www.w3.org/1999/xhtml"
+      xmlns:h = "http://java.sun.com/jsf/html"
+      xmlns:f = "http://java.sun.com/jsf/core"
+      xmlns:composite = "http://java.sun.com/jsf/composite"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:xx = "http://java.sun.com/jsf/composite/fhm">
+
+<composite:interface>
+    <composite:attribute name="loginOutcome" />
+    <composite:attribute name="searchAction" method-signature="java.lang.String search()" />
+    <composite:attribute name="searchInputText" />
+</composite:interface>
+
+<composite:implementation>
+    <h:form id="admin-panel" style="width: auto; float: right;">
+        <p:toolbar>
+            <f:facet name="right">
+                <xx:searchComponent
+                        searchAction = "#{cc.attrs.searchAction}"
+                        searchInputText = "#{cc.attrs.searchInputText}" />
+                <span class="ui-separator">
+                    <span class="ui-icon pi pi-ellipsis-v" />
+                </span>
+                <p:link value="Login" outcome="#{cc.attrs.loginOutcome}" style="padding: 5px;" />
+            </f:facet>
+        </p:toolbar>
+    </h:form>
+</composite:implementation>
+</html>

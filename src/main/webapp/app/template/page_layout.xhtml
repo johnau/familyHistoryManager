@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://java.sun.com/jsf/facelets"
+      >
+
+	<h:head>
+		<h:outputStylesheet name="styles.css" library="css" />
+	</h:head>
+
+	<h:body>
+
+	<div id="page">
+
+		<div id="header">
+		<p:insert name="header" >
+		  <p:include src="header.xhtml" />
+		</p:insert>
+		</div>
+
+		<div id="mainmenu" class="left-column-body">
+		<p:insert name="mainmenu" >
+		  <p:include src="main_menu.xhtml" />
+		</p:insert>
+		</div>
+
+		<div id="content" class="right-column-body">
+		<p:insert name="content" >
+		  <p:include src="profile_content.xhtml" />
+		</p:insert>
+		</div>
+
+		</div>
+
+	</h:body>
+</html>

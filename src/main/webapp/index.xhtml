@@ -3,14 +3,41 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://java.sun.com/jsf/facelets"
->
-<h:body>
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:xx = "http://java.sun.com/jsf/composite/fhm">
 
-    <p:composition template="template/page_layout.xhtml">
+    <h:head>
+        <title>McSweeney Family History</title>
+        <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
+    </h:head>
 
-    </p:composition>
+    <h:body>
 
-</h:body>
+        <p:outputPanel deferred="true" rendered="#{request.isUserInRole('ADMIN')}">
+            <xx:adminMenuBarComponent
+                    newFamilyMemberAction = "#{adminMenuBean.newFamilyMember}"
+                    editFamilyMemberAction = "#{adminMenuBean.chooseFamilyMemberForEdit}"
+                    deleteFamilyMemberAction = "#{adminMenuBean.chooseFamilyMemberForDelete}"
+                    viewFamilyMembersAction = "#{adminMenuBean.viewFamilyMembers}"
+                    newArticleAction = "#{adminMenuBean.newArticle}"
+                    editArticleAction = "#{adminMenuBean.editArticle}"
+                    deleteArticleAction = "#{adminMenuBean.deleteArticle}"
+                    viewArticlesAction = "#{adminMenuBean.viewArticles}"
+                    logoutAction = "#{logoutBean.logout}"
+                    searchAction = "#{searchBean.search}"
+                    searchInputText = "#{searchBean.searchInputText}" />
+        </p:outputPanel>
+        <p:outputPanel deferred="true" rendered="#{empty request.remoteUser}">
+            <xx:guestMenuBarComponent
+                    loginOutcome = "login"
+                    searchAction = "#{searchBean.search}"
+                    searchInputText = "#{searchBean.searchInputText}" />
+        </p:outputPanel>
+
+        <h:outputText value="#{request.remoteUser}" />
+        <h:outputText value="NOT LOGGED IN" rendered="#{empty request.remoteUser}" />
+        <h:outputText value="LOGGED IN AS ADMIN" rendered="#{request.isUserInRole('ADMIN')}" />
+    </h:body>
 
 </html>

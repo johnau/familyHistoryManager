@@ -16,11 +16,18 @@ import static javax.persistence.FetchType.LAZY;
  */
 @Entity
 @Table(name = "family_relationship")
+@SequenceGenerator(name = "family_relationship_sequence", initialValue = 1, allocationSize = 1)
 public class FamilyRelationship implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
+    @Version
+    @Column(name = "optLock", columnDefinition = "integer default 0", nullable = false)
+    private Long version = 0L;
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="family_relationship_sequence")
+    @Column(name = "id", columnDefinition = "bigint", nullable = false, updatable = false)
     private Long id;
 
     @ManyToOne(fetch = LAZY) // bidirectional
@@ -86,7 +93,7 @@ public class FamilyRelationship implements Serializable {
 
     @Override
     public String toString() {
-        return "tech.jmcs.familyhistorymanager.model.FamilyRelationship[ id=" + id + " ]";
+        return "tech.jmcs.fhm.model.FamilyRelationship[ id=" + id + " ]";
     }
     
 }

@@ -1,0 +1,40 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns = "http://www.w3.org/1999/xhtml"
+      xmlns:h = "http://java.sun.com/jsf/html"
+      xmlns:f = "http://java.sun.com/jsf/core"
+      xmlns:composite = "http://java.sun.com/jsf/composite"
+      xmlns:p="http://primefaces.org/ui">
+
+    <composite:interface>
+        <composite:attribute name="usernameLabel" />
+        <composite:attribute name="usernameValue" />
+        <composite:attribute name="passwordLabel" />
+        <composite:attribute name="passwordValue" />
+        <composite:attribute name="loginButtonLabel" />
+        <composite:attribute name="loginButtonAction" method-signature="void login()" />
+    </composite:interface>
+
+    <composite:implementation>
+        <h:form id="login">
+            <p:messages id="messages" globalOnly="true"/>
+
+            <h:panelGrid id="loginPanel" columns="3" cellpadding="5" style="margin: 0 auto;">
+                <p:outputLabel for="@next" value="#{cc.attrs.usernameLabel}"/>
+                <p:inputText id="username" value="#{cc.attrs.usernameValue}" required="true"/>
+                <p:message for="username"/>
+
+                <p:outputLabel for="@next" value="#{cc.attrs.passwordLabel}"/>
+                <p:inputText type="password" id="password" value="#{cc.attrs.passwordValue}" required="true"/>
+                <p:message for="password"/>
+
+                <h:panelGroup colspan="3">
+                    <p:commandButton id="submit" value="#{cc.attrs.loginButtonLabel}" icon="pi pi-sign-in"
+                                 action="#{cc.attrs.loginButtonAction}" update="@form" />
+                </h:panelGroup>
+            </h:panelGrid>
+        </h:form>
+    </composite:implementation>
+</html>
