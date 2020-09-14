@@ -2,7 +2,6 @@ package tech.jmcs.fhm;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import tech.jmcs.fhm.ejb.facade.FamilyRelationshipFacade;
 import tech.jmcs.fhm.ejb.facade.UserFacadeLocal;
 import tech.jmcs.fhm.model.Group;
 import tech.jmcs.fhm.model.User;
@@ -14,7 +13,6 @@ import javax.security.enterprise.identitystore.CredentialValidationResult;
 import javax.security.enterprise.identitystore.IdentityStore;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
-import java.util.EnumSet;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -26,16 +24,6 @@ public class CustomIdentityStore implements IdentityStore {
 
     @EJB
     private UserFacadeLocal userFacade;
-
-//    @Override
-//    public int priority() {
-//        return 70;
-//    }
-//
-//    @Override
-//    public Set<ValidationType> validationTypes() {
-//        return EnumSet.of(ValidationType.VALIDATE);
-//    }
 
     public CredentialValidationResult validate(UsernamePasswordCredential credential) {
         LOG.info("Validating user credentials: {} {}", credential.getCaller(), credential.getPasswordAsString());
