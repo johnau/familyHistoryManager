@@ -18,23 +18,23 @@
     </composite:interface>
 
     <composite:implementation>
-        <h:form id="login">
-            <p:messages id="messages" globalOnly="true"/>
+        <div id="#{cc.clientId}">
+            <h:form id="login">
+                <p:messages id="messages" globalOnly="true"/>
 
-            <h:panelGrid id="loginPanel" columns="3" cellpadding="5" style="margin: 0 auto;">
-                <p:outputLabel for="@next" value="#{cc.attrs.usernameLabel}"/>
-                <p:inputText id="username" value="#{cc.attrs.usernameValue}" required="true"/>
-                <p:message for="username"/>
+                <h:panelGrid id="loginPanel" columns="3" styleClass="ui-panelgrid-blank" cellpadding="5" style="margin: 0 auto;">
+                    <p:outputLabel for="@next" value="#{cc.attrs.usernameLabel}"/>
+                    <p:inputText id="username" value="#{cc.attrs.usernameValue}" required="true"/>
+                    <p:message for="username"/>
 
-                <p:outputLabel for="@next" value="#{cc.attrs.passwordLabel}"/>
-                <p:inputText type="password" id="password" value="#{cc.attrs.passwordValue}" required="true"/>
-                <p:message for="password"/>
+                    <p:outputLabel for="@next" value="#{cc.attrs.passwordLabel}"/>
+                    <p:password id="password" value="#{cc.attrs.passwordValue}" required="true"/>
+                    <p:message for="password"/>
 
-                <h:panelGroup colspan="3">
                     <p:commandButton id="submit" value="#{cc.attrs.loginButtonLabel}" icon="pi pi-sign-in"
-                                 action="#{cc.attrs.loginButtonAction}" update="@form" />
-                </h:panelGroup>
-            </h:panelGrid>
-        </h:form>
+                                     action="#{cc.attrs.loginButtonAction}" update="@form" />
+                </h:panelGrid>
+            </h:form>
+        </div>
     </composite:implementation>
 </html>

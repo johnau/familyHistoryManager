@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<test-data>
+    <articles>
+    </articles>
+    <family>
+        <familyMember id="1">
+            <firstname>John</firstname>
+            <othernames>Harold</othernames>
+            <lastname>McSweeney</lastname>
+            <dob>1988-03-10</dob>
+            <dod></dod>
+            <relationships>
+                <relationship>
+                    <type>FATHERED_BY</type>
+                    <rel-id>2</rel-id>
+                </relationship>
+            </relationships>
+            <bio-sections>
+                <section title="intro">
+                    John McSweeney was born in Subiaco, Western Australia on the 10th of March 1988. His father, {% "Chris McSweeney"|familyMember|id:2 %}, owned a house nearby.
+                </section>
+                <section title="Early Life">
+                    John went to school in Swanbourne, later moved to Nedlands, then back to Swanbourne for High School.
+                </section>
+                <section title="Mid Life">
+                    John has been doing various things in mid life
+                </section>
+            </bio-sections>
+        </familyMember>
+        <familyMember id="2">
+            <firstname>Chris</firstname>
+            <othernames>Liguori</othernames>
+            <lastname>McSweeney</lastname>
+            <dob>1946-04-06</dob>
+            <dod></dod>
+            <relationships>
+                <relationship>
+                    <type>FATHER_TO</type>
+                    <rel-id>1</rel-id>
+                </relationship>
+                <relationship>
+                    <type>FATHERED_BY</type>
+                    <rel-id>3</rel-id>
+                </relationship>
+            </relationships>
+        </familyMember>
+        <familyMember id="3">
+            <firstname>Reginald</firstname>
+            <othernames></othernames>
+            <lastname>McSweeney</lastname>
+            <dob>1905-01-01</dob>
+            <dod>1962-01-01</dod>
+            <relationships>
+                <relationship>
+                    <type>FATHER_TO</type>
+                    <rel-id>2</rel-id>
+                </relationship>
+            </relationships>
+        </familyMember>
+    </family>
+</test-data>

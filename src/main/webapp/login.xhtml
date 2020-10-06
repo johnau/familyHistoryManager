@@ -9,20 +9,26 @@
       xmlns:xx = "http://java.sun.com/jsf/composite/fhm">
 
     <h:head>
-        <title>McSweeney Family History | Admin Login</title>
+        <title>Login | McSweeney Family History</title>
         <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
     </h:head>
 
     <h:body>
-        <p:panel id="panel" header="McSweeney Family History Admin Login" style="margin-bottom:10px;">
-        <xx:loginComponent
-                usernameLabel = "User Name: "
-                usernameValue = "#{loginBean.username}"
-                passwordLabel = "Password: "
-                passwordValue = "#{loginBean.password}"
-                loginButtonLabel = "Login"
-                loginButtonAction = "#{loginBean.login}" />
-        </p:panel>
+        <p:outputPanel>
+            <div class="ui-g">
+                <div class="ui-g-4"/>
+                    <div class="ui-g-4">
+                        <h3>McSweeney Family History Admin Login</h3>
+                            <xx:loginComponent
+                                usernameLabel = "User Name: "
+                                usernameValue = "#{loginBean.username}"
+                                passwordLabel = "Password: "
+                                passwordValue = "#{loginBean.password}"
+                                loginButtonLabel = "Login"
+                                loginButtonAction = "#{loginBean.login}" />
+                    </div>
+            </div>
+        </p:outputPanel>
     </h:body>
 
 </html>

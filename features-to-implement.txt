@@ -1,0 +1,8 @@
+Features for Family History Manager:
+==========================================
+
+1. Suggest link on typing family members or articles:
+    When a user is typing into a Family Member Bio / Article / etc. the text should be monitored for Family Member
+    names and Article names.
+    eg. If a user typed "His father, Chris McSweeney", a suggestion should be made to convert
+    "Chris McSweeney" to a link to the page of "Christopher Liguori McSweeney".

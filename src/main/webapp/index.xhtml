@@ -8,36 +8,67 @@
       xmlns:xx = "http://java.sun.com/jsf/composite/fhm">
 
     <h:head>
-        <title>McSweeney Family History</title>
+        <title>Home | McSweeney Family History</title>
         <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
+        <h:outputStylesheet name="css/primeflex.css"/>
     </h:head>
 
     <h:body>
+        <div>
+            <p:outputPanel deferred="true" rendered="#{request.isUserInRole('ADMIN')}">
+                <xx:adminMenuBarComponent
+                        newFamilyMemberAction = "#{adminMenuBean.newFamilyMember}"
+                        editFamilyMemberAction = "#{adminMenuBean.chooseFamilyMemberForEdit}"
+                        deleteFamilyMemberAction = "#{adminMenuBean.chooseFamilyMemberForDelete}"
+                        viewFamilyMembersAction = "#{adminMenuBean.viewFamilyMembers}"
+                        newArticleAction = "#{adminMenuBean.newArticle}"
+                        editArticleAction = "#{adminMenuBean.editArticle}"
+                        deleteArticleAction = "#{adminMenuBean.deleteArticle}"
+                        viewArticlesAction = "#{adminMenuBean.viewArticles}"
+                        logoutAction = "#{logoutBean.logout}"
+                        searchAction = "#{searchBean.search}"
+                        searchInputText = "#{searchBean.searchInputText}" />
+            </p:outputPanel>
+        </div>
+        <div style="float: right; margin-right: 0;">
+            <p:outputPanel deferred="true" rendered="#{empty request.remoteUser}">
+                <xx:guestMenuBarComponent
+                        loginOutcome = "/login"
+                        searchAction = "#{searchBean.search}"
+                        searchInputText = "#{searchBean.searchInputText}" />
 
-        <p:outputPanel deferred="true" rendered="#{request.isUserInRole('ADMIN')}">
-            <xx:adminMenuBarComponent
-                    newFamilyMemberAction = "#{adminMenuBean.newFamilyMember}"
-                    editFamilyMemberAction = "#{adminMenuBean.chooseFamilyMemberForEdit}"
-                    deleteFamilyMemberAction = "#{adminMenuBean.chooseFamilyMemberForDelete}"
-                    viewFamilyMembersAction = "#{adminMenuBean.viewFamilyMembers}"
-                    newArticleAction = "#{adminMenuBean.newArticle}"
-                    editArticleAction = "#{adminMenuBean.editArticle}"
-                    deleteArticleAction = "#{adminMenuBean.deleteArticle}"
-                    viewArticlesAction = "#{adminMenuBean.viewArticles}"
-                    logoutAction = "#{logoutBean.logout}"
-                    searchAction = "#{searchBean.search}"
-                    searchInputText = "#{searchBean.searchInputText}" />
-        </p:outputPanel>
-        <p:outputPanel deferred="true" rendered="#{empty request.remoteUser}">
-            <xx:guestMenuBarComponent
-                    loginOutcome = "login"
-                    searchAction = "#{searchBean.search}"
-                    searchInputText = "#{searchBean.searchInputText}" />
-        </p:outputPanel>
+            </p:outputPanel>
+        </div>
 
-        <h:outputText value="#{request.remoteUser}" />
-        <h:outputText value="NOT LOGGED IN" rendered="#{empty request.remoteUser}" />
-        <h:outputText value="LOGGED IN AS ADMIN" rendered="#{request.isUserInRole('ADMIN')}" />
+        <div class="p-grid">
+            <div class="p-col-12">
+                <h1>McSweeney Family History</h1>
+            </div>
+        </div>
+
+        <div class="p-grid">
+            <div class="p-col-2">
+                <xx:mainMenuComponent
+                        menuLabel = "Main Menu" />
+            </div>
+            <div class="p-col-7">
+                <div class="p-grid">
+                    <div class="p-col-12">
+                        <h:outputText value="#{request.remoteUser}" />
+                        <h:outputText value="NOT LOGGED IN" rendered="#{empty request.remoteUser}" />
+                        <h:outputText value="LOGGED IN AS ADMIN" rendered="#{request.isUserInRole('ADMIN')}" />
+                    </div>
+                </div>
+            </div>
+            <div class="p-col-3">
+                Sidebar
+            </div>
+        </div>
+        <div class="p-grid">
+            <div class="p-col-12">
+                Footer
+            </div>
+        </div>
     </h:body>
 
 </html>

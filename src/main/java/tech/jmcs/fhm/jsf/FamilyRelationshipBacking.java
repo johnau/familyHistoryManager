@@ -12,7 +12,6 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -21,6 +20,7 @@ import java.util.List;
 
 @Named
 @RequestScoped
+@Deprecated
 public class FamilyRelationshipBacking {
     private static final Logger LOG = LoggerFactory.getLogger(FamilyRelationshipBacking.class);
 
@@ -111,7 +111,7 @@ public class FamilyRelationshipBacking {
     public void setId(Long id) {
         this.id = id;
         this.a = familyMemberFacade.find(id);
-        LOG.info("Set Family member A as: #{}: {} {} {}", a.getId(), a.getFirstName(), a.getLastName(), a.getClass().getName());
+        LOG.info("Set Family member A as: #{}: {} {} {}", a.getId(), a.getFirstname(), a.getLastname(), a.getClass().getName());
     }
 
     public FamilyMember getA() {
@@ -132,7 +132,7 @@ public class FamilyRelationshipBacking {
     }
 
     public void setB(FamilyMember b) {
-        LOG.info("Set Family member B as: #{}: {} {} {}", b.getId(), b.getFirstName(), b.getLastName(), b.getClass().getName());
+        LOG.info("Set Family member B as: #{}: {} {} {}", b.getId(), b.getFirstname(), b.getLastname(), b.getClass().getName());
         this.b = b;
     }
 

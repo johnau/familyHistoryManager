@@ -57,7 +57,7 @@ and open the template in the editor.
                     <ul>
                         <p:repeat value="#{listFamilyMembersBacking.familyMembers}" var="familyMember">
                             <li>
-                                <h:link value="#{familyMember.firstName} #{familyMember.lastName}" outcome="family-member">
+                                <h:link value="#{familyMember.firstname} #{familyMember.lastname}" outcome="family-member">
                                     <f:param name="id" value="#{familyMember.id}" />
                                 </h:link>
                             </li>

@@ -13,13 +13,13 @@
     
     <security-constraint>
         <web-resource-collection>
-            <web-resource-name>Family History Manager Application</web-resource-name>
-            <url-pattern>/app/*</url-pattern>
+            <web-resource-name>Family History Manager Admin Only Functions</web-resource-name>
+            <url-pattern>/admin/*</url-pattern>
         </web-resource-collection>
-<!--        <auth-constraint>
+        <auth-constraint>
             <role-name>ADMIN</role-name>
             <role-name>USER</role-name>
-        </auth-constraint>-->
+        </auth-constraint>
     </security-constraint>
 
     <security-role> 
@@ -46,7 +46,7 @@
     </servlet-mapping>
  
     <welcome-file-list>
-        <welcome-file>app/index.xhtml</welcome-file>
+        <welcome-file>index.xhtml</welcome-file>
     </welcome-file-list>  
     
 </web-app>

@@ -30,7 +30,7 @@ and open the template in the editor.
         <div class="">
             <h3>Edit Family Relationships for: </h3>
             <h3>
-                <h:link value="#{familyRelationshipBacking.a.firstName} #{familyRelationshipBacking.a.lastName}" outcome="family-member">
+                <h:link value="#{familyRelationshipBacking.a.firstname} #{familyRelationshipBacking.a.lastname}" outcome="family-member">
                     <f:param name="id" value="#{familyRelationshipBacking.a.id}" />
                 </h:link>
             </h3>
@@ -45,7 +45,7 @@ and open the template in the editor.
 
                 <h:panelGrid columns="3" cellpadding="5" style="margin: 0 auto;">
 
-                    <h:outputText value="#{familyRelationshipBacking.a.firstName} #{familyRelationshipBacking.a.lastName}" />
+                    <h:outputText value="#{familyRelationshipBacking.a.firstname} #{familyRelationshipBacking.a.lastname}" />
 
                     <h:selectOneMenu value="#{familyRelationshipBacking.relType}" converter="jsf.familyRelationshipConverter">
                         <f:selectItem itemLabel="Select Relationship Type" itemValue="" noSelectionOption="true" />
@@ -56,7 +56,7 @@ and open the template in the editor.
                     <h:selectOneMenu value="#{familyRelationshipBacking.b}" converter="jsf.familyMemberConverter">
                         <f:selectItem itemLabel="Select Family Member" itemValue="" noSelectionOption="true" />
                         <f:selectItems value="#{familyRelationshipBacking.allMembers}" var="fm"
-                               itemValue="#{fm}" itemLabel="#{fm.firstName} #{fm.lastName}" />
+                               itemValue="#{fm}" itemLabel="#{fm.firstname} #{fm.lastname}" />
                     </h:selectOneMenu>
 
                     <p:commandButton id="submit" update="@form"

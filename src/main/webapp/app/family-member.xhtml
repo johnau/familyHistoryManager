@@ -31,7 +31,7 @@ and open the template in the editor.
                 <div class="ui-g-4"/>
                 <div class="ui-g-4">
                     <h3>
-                        <h:link value="#{familyMemberBacking.familyMember.firstName} #{familyMemberBacking.familyMember.lastName}" outcome="family-member">
+                        <h:link value="#{familyMemberBacking.familyMember.firstname} #{familyMemberBacking.familyMember.lastname}" outcome="family-member">
                             <f:param name="id" value="#{familyMemberBacking.familyMember.id}" />
                         </h:link>
                     </h3>
@@ -52,7 +52,7 @@ and open the template in the editor.
                     <ul>
                         <p:repeat value="#{familyMemberBacking.familyMember.relationships}" var="familyRelationship">
                             <li>
-                                <h:link value="#{familyRelationship.b.firstName} #{familyRelationship.b.lastName}" outcome="family-member">
+                                <h:link value="#{familyRelationship.b.firstname} #{familyRelationship.b.lastname}" outcome="family-member">
                                     <f:param name="id" value="#{familyRelationship.b.id}" />
                                 </h:link>
                             </li>

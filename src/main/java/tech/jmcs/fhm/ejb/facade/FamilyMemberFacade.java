@@ -21,7 +21,9 @@ public class FamilyMemberFacade extends AbstractFacade<FamilyMember> implements 
     private EntityManager em;
 
     public FamilyMemberFacade() {
+
         super(FamilyMember.class);
+
     }
 
     @Override
@@ -38,7 +40,7 @@ public class FamilyMemberFacade extends AbstractFacade<FamilyMember> implements 
     @SuppressWarnings("unchecked")
     public List<FamilyMember> findByName(String name) {
         if (name == null || name.isEmpty()) {
-            LOG.debug("Find By Company Name: No Company Name Provided for Lookup");
+            LOG.debug("Find By Name: No name provided!");
             return null;
         }
 
@@ -62,5 +64,38 @@ public class FamilyMemberFacade extends AbstractFacade<FamilyMember> implements 
         } catch (ClassCastException ce) {
             return new ArrayList<FamilyMember>();
         }
+    }
+
+    public List<FamilyMember> findByFullName(String firstname, String otherNames, String lastname) {
+        if (firstname == null || firstname.isEmpty() || lastname == null || lastname.isEmpty()) {
+            LOG.debug("Find By Full Name: Need to provide Firstname and Lastname");
+            return null;
+        }
+
+        Long countByName = (Long) em.createNamedQuery("FamilyMember.countByFullName")
+                .setParameter("firstname", firstname)
+                .setParameter("otherNames", otherNames)
+                .setParameter("lastname", lastname)
+                .getSingleResult();
+
+        if (countByName == 0) {
+            return new ArrayList<FamilyMember>();
+        }
+        List existing = em.createNamedQuery("FamilyMember.findByFullName")
+                .setParameter("firstname", firstname)
+                .setParameter("otherNames", otherNames)
+                .setParameter("lastname", lastname)
+                .getResultList();
+
+        try {
+            List<FamilyMember> _existing = (List<FamilyMember>) existing;
+
+            LOG.debug("Found [{}] existing Family Members with Name '{} {} {}'", _existing.size(), firstname, otherNames, lastname);
+
+            return _existing;
+        } catch (ClassCastException ce) {
+            return new ArrayList<FamilyMember>();
+        }
+
     }
 }

@@ -1,0 +1,48 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns = "http://www.w3.org/1999/xhtml"
+      xmlns:h = "http://java.sun.com/jsf/html"
+      xmlns:f = "http://java.sun.com/jsf/core"
+      xmlns:composite = "http://java.sun.com/jsf/composite"
+      xmlns:p="http://primefaces.org/ui">
+
+<composite:interface>
+    <composite:attribute name="firstname" />
+    <composite:attribute name="otherNames" />
+    <composite:attribute name="lastname" />
+    <composite:attribute name="dob" />
+    <composite:attribute name="birthplace" />
+    <composite:attribute name="fatherName" />
+    <composite:attribute name="fatherId" />
+    <composite:attribute name="motherName" />
+    <composite:attribute name="motherId" />
+</composite:interface>
+
+<composite:implementation>
+    <p:outputPanel>
+        <div style="border: 1px solid #aaaaaa; border-radius: 5px;">
+            <div>
+                <h:outputText value="Name: #{cc.attrs.firstname} #{cc.attrs.otherNames} #{cc.attrs.lastname}" />
+            </div>
+            <div>
+                <h:outputText value="D.O.B: #{cc.attrs.dob}" />
+            </div>
+            <div>
+                <p:link value="Father: #{cc.attrs.fatherName}" outcome="/family-member">
+                    <f:param name="id" value="#{cc.attrs.fatherId}" />
+                </p:link>
+            </div>
+            <div>
+                <p:link value="Mother: #{cc.attrs.motherName}" outcome="/family-member">
+                    <f:param name="id" value="#{cc.attrs.motherId}" />
+                </p:link>
+            </div>
+            <div>
+                <h:outputText value="Birthplace: #{cc.attrs.birthplace}" />
+            </div>
+        </div>
+    </p:outputPanel>
+</composite:implementation>
+</html>

@@ -1,0 +1,52 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns = "http://www.w3.org/1999/xhtml"
+      xmlns:h = "http://java.sun.com/jsf/html"
+      xmlns:f = "http://java.sun.com/jsf/core"
+      xmlns:composite = "http://java.sun.com/jsf/composite"
+      xmlns:p="http://primefaces.org/ui">
+
+<composite:interface>
+    <composite:attribute name="firstnameLabel" />
+    <composite:attribute name="firstnameInputText" />
+    <composite:attribute name="otherNamesLabel" />
+    <composite:attribute name="otherNamesInputText" />
+    <composite:attribute name="lastnameLabel" />
+    <composite:attribute name="lastnameInputText" />
+    <composite:attribute name="dobLabel" />
+    <composite:attribute name="dobInputDate" />
+    <composite:attribute name="createButtonAction" method-signature="void createNewFamilyMember()" />
+</composite:interface>
+
+<composite:implementation>
+    <div id="#{cc.clientId}">
+        <h:form id="new-family-member">
+            <p:messages id="messages" globalOnly="true"/>
+
+            <h:panelGrid columns="3" cellpadding="5" style="margin: 0 auto;">
+
+                <p:outputLabel for="@next" value="#{cc.attrs.firstnameLabel}"/>
+                <p:inputText id="firstname" value="#{cc.attrs.firstnameInputText}"/>
+                <p:message for="@previous"/>
+
+                <p:outputLabel for="@next" value="#{cc.attrs.otherNamesLabel}"/>
+                <p:inputText id="othernames" value="#{cc.attrs.otherNamesInputText}"/>
+                <p:message for="@previous"/>
+
+                <p:outputLabel for="@next" value="#{cc.attrs.lastnameLabel}"/>
+                <p:inputText id="lastname" value="#{cc.attrs.lastnameInputText}"/>
+                <p:message for="@previous"/>
+
+                <p:outputLabel for="@next" value="#{cc.attrs.dobLabel}"/>
+                <p:datePicker value="#{cc.attrs.dobInputDate}"  />
+                <p:message for="@previous"/>
+
+                <p:commandButton id="submit" update="@form"
+                                 value="Create Family Member" action="#{cc.attrs.createButtonAction}" ajax="false" />
+            </h:panelGrid>
+        </h:form>
+    </div>
+</composite:implementation>
+</html>

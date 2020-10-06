@@ -12,6 +12,7 @@ import java.util.List;
 
 @Named
 @RequestScoped
+@Deprecated
 public class ListFamilyMembersBacking {
     private static final Logger LOG = LoggerFactory.getLogger(ListFamilyMembersBacking.class);
 

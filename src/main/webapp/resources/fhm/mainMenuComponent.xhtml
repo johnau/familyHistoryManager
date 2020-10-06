@@ -1,0 +1,27 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns = "http://www.w3.org/1999/xhtml"
+      xmlns:h = "http://java.sun.com/jsf/html"
+      xmlns:f = "http://java.sun.com/jsf/core"
+      xmlns:composite = "http://java.sun.com/jsf/composite"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:xx = "http://java.sun.com/jsf/composite/fhm">
+
+<composite:interface>
+    <composite:attribute name="menuLabel" />
+</composite:interface>
+
+<composite:implementation>
+    <div id="#{cc.clientId}">
+        <h3>#{cc.attrs.menuLabel}</h3>
+        <p:outputPanel deferred="true">
+            <ul style="list-style-type:none;">
+                <xx:familyMembersListComponent
+                        familyMemberList = "#{listFamilyMembersBean.allFamilyMembers}" />
+            </ul>
+        </p:outputPanel>
+    </div>
+</composite:implementation>
+</html>

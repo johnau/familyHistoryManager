@@ -16,40 +16,49 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "family_member")
-@SequenceGenerator(name = "family_member_sequence", initialValue = 1, allocationSize = 1)
+@SequenceGenerator(name = "familyMember_sequence", initialValue = 100, allocationSize = 1)
 @NamedQueries({
-    @NamedQuery(name = "FamilyMember.countByFirstName", query = "SELECT COUNT(f) FROM FamilyMember f WHERE LOWER(f.firstName) = LOWER(:firstName)"),
-    @NamedQuery(name = "FamilyMember.findByFirstName", query = "SELECT f FROM FamilyMember f WHERE LOWER(f.firstName) = LOWER(:firstName)"),
-    @NamedQuery(name = "FamilyMember.countByName", query = "SELECT COUNT(f) FROM FamilyMember f WHERE CONCAT(LOWER(f.firstName), ' ', LOWER(f.lastName)) = LOWER(:name)"),
-    @NamedQuery(name = "FamilyMember.findByName", query = "SELECT f FROM FamilyMember f WHERE CONCAT(LOWER(f.firstName), ' ', LOWER(f.lastName)) = LOWER(:name)"),
+    @NamedQuery(name = "FamilyMember.countByFirstname", query = "SELECT COUNT(f) FROM FamilyMember f WHERE LOWER(f.firstname) = LOWER(:firstname)"),
+    @NamedQuery(name = "FamilyMember.findByFirstname", query = "SELECT f FROM FamilyMember f WHERE LOWER(f.firstname) = LOWER(:firstname)"),
+    @NamedQuery(name = "FamilyMember.countByName", query = "SELECT COUNT(f) FROM FamilyMember f WHERE CONCAT(LOWER(f.firstname), ' ', LOWER(f.lastname)) = LOWER(:name)"),
+    @NamedQuery(name = "FamilyMember.findByName", query = "SELECT f FROM FamilyMember f WHERE CONCAT(LOWER(f.firstname), ' ', LOWER(f.lastname)) = LOWER(:name)"),
+    @NamedQuery(name = "FamilyMember.countByFullName", query = "SELECT COUNT(f) FROM FamilyMember f WHERE LOWER(f.firstname) = LOWER(:firstname) AND LOWER(f.otherNames) = LOWER(:otherNames) AND LOWER(f.lastname) = LOWER(:lastname)"),
+    @NamedQuery(name = "FamilyMember.findByFullName", query = "SELECT f FROM FamilyMember f WHERE LOWER(f.firstname) = LOWER(:firstname) AND LOWER(f.otherNames) = LOWER(:otherNames) AND LOWER(f.lastname) = LOWER(:lastname)"),
 })
 public class FamilyMember implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2L;
 
     @Version
     @Column(name = "optLock", columnDefinition = "integer default 0", nullable = false)
     private Long version = 0L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="family_member_sequence")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="familyMember_sequence")
     @Column(name = "id", columnDefinition = "bigint", nullable = false, updatable = false)
     private Long id;
 
-    private String firstName;
+    private String firstname;
     
     private String otherNames;
     
-    private String lastName;
+    private String lastname;
     
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dob;
     
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dod;
-    
+
+    private String birthplace;
+
     @OneToMany(mappedBy = "a", fetch = FetchType.LAZY)
     private List<FamilyRelationship> relationships;
+
+    private String description;
+
+    @OneToMany(mappedBy = "familyMember", fetch = FetchType.LAZY)
+    private List<FamilyMemberBioSection> bioSections;
 
     public FamilyMember() {}
     
@@ -61,12 +70,12 @@ public class FamilyMember implements Serializable {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
     public String getOtherNames() {
@@ -77,12 +86,12 @@ public class FamilyMember implements Serializable {
         this.otherNames = otherNames;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public Date getDob() {
@@ -101,12 +110,36 @@ public class FamilyMember implements Serializable {
         this.dod = dod;
     }
 
+    public String getBirthplace() {
+        return birthplace;
+    }
+
+    public void setBirthplace(String birthplace) {
+        this.birthplace = birthplace;
+    }
+
     public List<FamilyRelationship> getRelationships() {
         return relationships;
     }
 
     public void setRelationships(List<FamilyRelationship> relationships) {
         this.relationships = relationships;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<FamilyMemberBioSection> getBioSections() {
+        return bioSections;
+    }
+
+    public void setBioSections(List<FamilyMemberBioSection> bioSections) {
+        this.bioSections = bioSections;
     }
 
     @Override

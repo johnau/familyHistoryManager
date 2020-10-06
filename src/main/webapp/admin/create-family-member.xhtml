@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:xx = "http://java.sun.com/jsf/composite/fhm">
+
+<h:head>
+    <title>McSweeney Family History</title>
+    <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
+    <h:outputStylesheet name="css/primeflex.css"/>
+</h:head>
+
+<h:body>
+    <div>
+        <p:outputPanel deferred="true" rendered="#{request.isUserInRole('ADMIN')}">
+            <xx:adminMenuBarComponent
+                    newFamilyMemberAction = "#{adminMenuBean.newFamilyMember}"
+                    editFamilyMemberAction = "#{adminMenuBean.chooseFamilyMemberForEdit}"
+                    deleteFamilyMemberAction = "#{adminMenuBean.chooseFamilyMemberForDelete}"
+                    viewFamilyMembersAction = "#{adminMenuBean.viewFamilyMembers}"
+                    newArticleAction = "#{adminMenuBean.newArticle}"
+                    editArticleAction = "#{adminMenuBean.editArticle}"
+                    deleteArticleAction = "#{adminMenuBean.deleteArticle}"
+                    viewArticlesAction = "#{adminMenuBean.viewArticles}"
+                    logoutAction = "#{logoutBean.logout}"
+                    searchAction = "#{searchBean.search}"
+                    searchInputText = "#{searchBean.searchInputText}" />
+        </p:outputPanel>
+    </div>
+    <div class="p-grid">
+        <div class="p-col-12">
+            <h1>New Family Member | McSweeney Family History</h1>
+        </div>
+    </div>
+
+    <div class="p-grid">
+        <div class="p-col-2">
+            <xx:mainMenuComponent
+                    menuLabel = "Main Menu" />
+        </div>
+        <div class="p-col-7">
+            <div class="p-grid">
+                <p:outputPanel id="family-member-content">
+                        <xx:familyMemberCreateComponent
+                                firstnameLabel = "Firstname: "
+                                firstnameInputText = "#{createFamilyMemberBean.firstname}"
+                                otherNamesLabel = "Other Names: "
+                                otherNamesInputText = "#{createFamilyMemberBean.otherNames}"
+                                lastnameLabel = "Lastname: "
+                                lastnameInputText = "#{createFamilyMemberBean.lastname}"
+                                dobLabel = "D.O.B: "
+                                dobInputDate = "#{createFamilyMemberBean.dob}"
+                                createButtonAction = "#{createFamilyMemberBean.create}" />
+                        <xx:familyMembersListComponent
+                                familyMemberList = "#{listFamilyMembersBean.allFamilyMembers}" />
+                </p:outputPanel>
+            </div>
+        </div>
+        <div class="p-col-3">
+            Sidebar
+        </div>
+    </div>
+    <div class="p-grid">
+        <div class="p-col-12">
+            Footer
+        </div>
+    </div>
+</h:body>
+
+</html>

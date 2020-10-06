@@ -6,7 +6,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 import tech.jmcs.fhm.model.FamilyMember;
 import tech.jmcs.fhm.model.RelationshipType;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2020-09-14T15:39:58")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2020-09-27T17:23:15")
 @StaticMetamodel(FamilyRelationship.class)
 public class FamilyRelationship_ { 
 

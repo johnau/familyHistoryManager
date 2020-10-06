@@ -16,7 +16,7 @@ import static javax.persistence.FetchType.LAZY;
  */
 @Entity
 @Table(name = "family_relationship")
-@SequenceGenerator(name = "family_relationship_sequence", initialValue = 1, allocationSize = 1)
+@SequenceGenerator(name = "familyRelationship_sequence", initialValue = 1, allocationSize = 1)
 public class FamilyRelationship implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -26,7 +26,7 @@ public class FamilyRelationship implements Serializable {
     private Long version = 0L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="family_relationship_sequence")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="familyRelationship_sequence")
     @Column(name = "id", columnDefinition = "bigint", nullable = false, updatable = false)
     private Long id;
 

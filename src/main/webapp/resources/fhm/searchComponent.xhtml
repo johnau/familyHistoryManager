@@ -14,7 +14,9 @@
 </composite:interface>
 
 <composite:implementation>
-    <p:inputText value="#{cc.attrs.searchInputText}" placeholder="Search..." />
-    <p:commandButton icon="pi pi-search" action="#{cc.attrs.searchAction}" />
+    <div id="#{cc.clientId}">
+        <p:inputText value="#{cc.attrs.searchInputText}" placeholder="Search..." />
+        <p:commandButton icon="pi pi-search" action="#{cc.attrs.searchAction}" />
+    </div>
 </composite:implementation>
 </html>

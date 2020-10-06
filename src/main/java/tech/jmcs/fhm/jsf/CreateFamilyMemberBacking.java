@@ -2,7 +2,6 @@ package tech.jmcs.fhm.jsf;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import tech.jmcs.fhm.MainDatabase;
 import tech.jmcs.fhm.ejb.facade.FamilyMemberFacadeLocal;
 import tech.jmcs.fhm.model.FamilyMember;
 
@@ -20,6 +19,7 @@ import java.util.Date;
 
 @Named
 @RequestScoped
+@Deprecated
 public class CreateFamilyMemberBacking {
     private static final Logger LOG = LoggerFactory.getLogger(CreateFamilyMemberBacking.class);
 
@@ -70,9 +70,9 @@ public class CreateFamilyMemberBacking {
         LOG.debug("Creating a new family member...");
 
         FamilyMember newMember = new FamilyMember();
-        newMember.setFirstName(this.firstName);
+        newMember.setFirstname(this.firstName);
         newMember.setOtherNames(this.otherNames);
-        newMember.setLastName(this.lastName);
+        newMember.setLastname(this.lastName);
 
         familyMemberFacade.create(newMember);
 

@@ -9,50 +9,52 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:xx = "http://java.sun.com/jsf/composite/fhm">
 
-<composite:interface>
-    <composite:attribute name="newFamilyMemberAction" method-signature="java.lang.String newFamilyMember()" />
-    <composite:attribute name="editFamilyMemberAction" method-signature="java.lang.String editFamilyMember()" />
-    <composite:attribute name="deleteFamilyMemberAction" method-signature="java.lang.String deleteFamilyMember()" />
-    <composite:attribute name="viewFamilyMembersAction" method-signature="java.lang.String viewFamilyMembersAction()" />
+    <composite:interface>
+        <composite:attribute name="newFamilyMemberAction" method-signature="java.lang.String newFamilyMember()" />
+        <composite:attribute name="editFamilyMemberAction" method-signature="java.lang.String editFamilyMember()" />
+        <composite:attribute name="deleteFamilyMemberAction" method-signature="java.lang.String deleteFamilyMember()" />
+        <composite:attribute name="viewFamilyMembersAction" method-signature="java.lang.String viewFamilyMembersAction()" />
 
-    <composite:attribute name="newArticleAction" method-signature="java.lang.String newArticle()" />
-    <composite:attribute name="editArticleAction" method-signature="java.lang.String editArticle()" />
-    <composite:attribute name="deleteArticleAction" method-signature="java.lang.String deleteArticle()" />
-    <composite:attribute name="viewArticlesAction" method-signature="java.lang.String viewArticles()" />
+        <composite:attribute name="newArticleAction" method-signature="java.lang.String newArticle()" />
+        <composite:attribute name="editArticleAction" method-signature="java.lang.String editArticle()" />
+        <composite:attribute name="deleteArticleAction" method-signature="java.lang.String deleteArticle()" />
+        <composite:attribute name="viewArticlesAction" method-signature="java.lang.String viewArticles()" />
 
-    <composite:attribute name="logoutAction" method-signature="java.lang.String logout()" />
-    <composite:attribute name="searchAction" method-signature="java.lang.String search()" />
-    <composite:attribute name="searchInputText" />
-</composite:interface>
+        <composite:attribute name="logoutAction" method-signature="java.lang.String logout()" />
+        <composite:attribute name="searchAction" method-signature="java.lang.String search()" />
+        <composite:attribute name="searchInputText" />
+    </composite:interface>
 
-<composite:implementation>
-    <h:form id="admin-panel">
-        <p:toolbar>
-            <f:facet name="left">
-                <p:menuButton value="Family Member">
-                    <p:menuitem value="New Member" action="#{cc.attrs.newFamilyMemberAction}" icon="pi pi-user-plus" />
-                    <p:menuitem value="Edit Member" action="#{cc.attrs.editFamilyMemberAction}" icon="pi pi-user-edit" />
-                    <p:menuitem value="Delete Member" action="#{cc.attrs.deleteFamilyMemberAction}" icon="pi pi-user-minus" />
-                    <p:menuitem value="View Family Members" action="#{cc.attrs.viewFamilyMembersAction}" icon="pi pi-users" />
-                </p:menuButton>
-                <p:menuButton value="Article">
-                    <p:menuitem value="New Article" action="#{cc.attrs.newArticleAction}" icon="pi pi-file-o" />
-                    <p:menuitem value="Edit Article" action="#{cc.attrs.editArticleAction}" icon="pi pi-file" />
-                    <p:menuitem value="Delete Article" action="#{cc.attrs.deleteArticleAction}" icon="pi pi-file-excel" />
-                    <p:menuitem value="View Articles" action="#{cc.attrs.viewArticlesAction}" icon="pi pi-folder" />
-                </p:menuButton>
-            </f:facet>
+    <composite:implementation>
+        <h:form id="admin-panel">
+            <p:toolbar>
+                <f:facet name="left">
+                    <p:menuButton value="Family Member">
+                        <p:menuitem value="New Member" action="#{cc.attrs.newFamilyMemberAction}" icon="pi pi-user-plus" />
+                        <p:menuitem value="Edit Member" action="#{cc.attrs.editFamilyMemberAction}" icon="pi pi-user-edit" />
+                        <p:menuitem value="Delete Member" action="#{cc.attrs.deleteFamilyMemberAction}" icon="pi pi-user-minus" />
+                        <p:menuitem value="View Family Members" action="#{cc.attrs.viewFamilyMembersAction}" icon="pi pi-users" />
+                    </p:menuButton>
+                    <p:menuButton value="Article">
+                        <p:menuitem value="New Article" action="#{cc.attrs.newArticleAction}" icon="pi pi-file-o" />
+                        <p:menuitem value="Edit Article" action="#{cc.attrs.editArticleAction}" icon="pi pi-file" />
+                        <p:menuitem value="Delete Article" action="#{cc.attrs.deleteArticleAction}" icon="pi pi-file-excel" />
+                        <p:menuitem value="View Articles" action="#{cc.attrs.viewArticlesAction}" icon="pi pi-folder" />
+                    </p:menuButton>
+                </f:facet>
 
-            <f:facet name="right">
-                <xx:searchComponent
-                        searchAction = "#{cc.attrs.searchAction}"
-                        searchInputText = "#{cc.attrs.searchInputText}" />
-                <span class="ui-separator">
-                    <span class="ui-icon pi pi-ellipsis-v" />
-                </span>
-                <p:commandButton value="Logout" icon="pi pi-sign-out" action="#{cc.attrs.logoutAction}" />
-            </f:facet>
-        </p:toolbar>
-    </h:form>
-</composite:implementation>
+                <f:facet name="right">
+                    <div>
+                        <xx:searchComponent
+                                searchAction = "#{cc.attrs.searchAction}"
+                                searchInputText = "#{cc.attrs.searchInputText}" />
+                        <span class="ui-separator">
+                            <span class="ui-icon pi pi-ellipsis-v" />
+                        </span>
+                        <p:commandButton value="Logout" icon="pi pi-sign-out" action="#{cc.attrs.logoutAction}" />
+                    </div>
+                </f:facet>
+            </p:toolbar>
+        </h:form>
+    </composite:implementation>
 </html>

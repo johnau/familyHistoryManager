@@ -1,0 +1,21 @@
+html,
+body {min-height:100%; padding:0; margin:0;}
+
+#wrapper {padding:50px 0; position:absolute; top:0; bottom:0; left:0; right:0;}
+#content {min-height:100%; background-color:#eee}
+#header {margin-top:-100px; height:100px; background-color:#ddd;}
+#footer {margin-bottom:-50px; height:50px; background-color:#ddd;}
+p {margin:0; padding:0 0 1em 0;}
+
+.left-column-body {
+    float: left;
+}
+
+.right-column-body {
+    float: left;
+}
+
+.box2 {
+    background-color: #aaa;
+    border: 1px solid #000 ;
+}

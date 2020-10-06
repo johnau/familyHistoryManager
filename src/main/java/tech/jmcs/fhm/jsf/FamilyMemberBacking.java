@@ -12,6 +12,7 @@ import javax.validation.constraints.NotNull;
 
 @Named
 @RequestScoped
+@Deprecated
 public class FamilyMemberBacking {
     private static final Logger LOG = LoggerFactory.getLogger(FamilyMemberBacking.class);
 
